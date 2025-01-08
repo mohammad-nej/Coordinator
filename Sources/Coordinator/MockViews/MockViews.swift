@@ -7,7 +7,14 @@
 
 import SwiftUI
 
-struct HomeView : MainViewable {
+
+protocol   ExtenedViewable : MainView {
+    static var title: String { get }
+}
+extension ExtenedViewable {
+    var title : String { Self.title }
+}
+struct HomeView : ExtenedViewable {
    
     
     typealias Destination  = HomeView
@@ -29,7 +36,7 @@ struct HomeView : MainViewable {
 #Preview {
     HomeView()
 }
-struct SearchView : MainViewable {
+struct SearchView : MainView {
    
     
 

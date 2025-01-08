@@ -23,9 +23,11 @@ struct MainPage:  StructuredPage{
         Divider()
         
         //AnyView(coordinator.currentState.returnView())
-        Text(coordinator.currentState.title)
-        coordinator.currentView
         
+        coordinator.currentView
+        if let state = coordinator.currentState as? (any ExtenedViewable){
+            Text(state.title)
+        }
         
         Divider()
         Color.green

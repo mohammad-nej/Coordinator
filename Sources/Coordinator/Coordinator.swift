@@ -5,36 +5,51 @@
 import SwiftUI
 
 
-///Shared Singleton of Coordinator class for ease of use
+///Shared Singleton of Coordinator class for ease of use.
 ///You have to set homePage befor using Coordinator or it will crash at runtime
 @MainActor public let coordinator = Coordinator.shared
+
+
+@MainActor public protocol Coordinatable : Observable {
+    
+    static var shared : Self { get }
+    
+    var homePage : (any MainView)? { get }
+    var stack : [any MainView] { get set }
+}
 
 ///Class responsible for changing views when neccessary
 @Observable
 public final class Coordinator {
+    
   
     @MainActor public static let shared = Coordinator()
     
    
-    public var homePage : (any MainViewable)?
+    public var homePage : (any MainView)?
 
-    private var stack : [any MainViewable]
+    public var stack : [any MainView]
+    
+//    public var stack : [any View]
+//        return _stack
+//    }
     
     private init() {
         stack = []
+    
     }
  
 }
 
 public extension Coordinator {
-    func push(state : any MainViewable){
+     func push(state : any MainView){
         guard homePage != nil else {
             fatalError("HomePage must not be nil!")
         }
         stack.append(state)
     }
     
-    func pop(){
+     func pop(){
         guard let homePage else {
             fatalError("HomePage must not be nil!")
         }
@@ -45,7 +60,7 @@ public extension Coordinator {
             stack = [homePage]
         }
     }
-    func toHome(){
+     func toHome(){
         guard let homePage else {
             fatalError("HomePage must not be nil!")
         }
@@ -54,7 +69,7 @@ public extension Coordinator {
 }
 
 public extension Coordinator {
-     var currentState : any MainViewable {
+    var currentState : any MainView {
         guard let homePage else {
             fatalError("HomePage must not be nil!")
         }
@@ -65,6 +80,7 @@ public extension Coordinator {
         return AnyView(currentState.returnView())
     }
 }
+
 
 
 
