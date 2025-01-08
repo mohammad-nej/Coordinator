@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView : MainView {
+struct HomeView : MainViewable {
    
     
     typealias Destination  = HomeView
@@ -29,7 +29,7 @@ struct HomeView : MainView {
 #Preview {
     HomeView()
 }
-struct SearchView : MainView {
+struct SearchView : MainViewable {
    
     
 

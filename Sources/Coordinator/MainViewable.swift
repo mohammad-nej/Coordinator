@@ -8,14 +8,16 @@
 
 import SwiftUI
 
-@MainActor public protocol MainView:  View{
+
+///Indicating major views that should Coordinator show on the UI
+@MainActor public protocol MainViewable:  View{
     //associatedtype Destination : View
     static var title : String { get }
     static var isButtomBarVisible : Bool { get }
 //    @ViewBuilder var body : Destination { get }
    //var destination : Destination { get }
 }
-public extension MainView where Self : View {
+public extension MainViewable where Self : View {
     func returnView() -> Self {
         return self
     }
