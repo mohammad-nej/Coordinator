@@ -16,14 +16,8 @@ import SwiftUI
 public extension MainView where Self : View {
     func returnView() -> Self {
         return self
-}
+    }
     
-//    var title : String {
-//        return Self.title
-//    }
-//    var isButtomBarVisible : Bool {
-//        return Self.isButtomBarVisible
-//    }
 }
 
 
