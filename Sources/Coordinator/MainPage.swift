@@ -10,9 +10,10 @@ import SwiftUI
 
 public protocol StructuredPage : View {}
 
-struct MainPage:  StructuredPage{
-    let coordinator = Coordinator.shared
+struct MainPage:  MainView{
+    private var coordinator : Coordinator
     init(){
+        coordinator = Coordinator()
         coordinator.homePage = HomeView()
     }
     
@@ -30,10 +31,14 @@ struct MainPage:  StructuredPage{
         }
         
         Divider()
+            .onAppear{
+                coordinator.homePage = HomeView()
+            }
         Color.green
             .frame(height:300)
+            .environment(coordinator)
         
-        
+            
         
         
     }
@@ -41,6 +46,7 @@ struct MainPage:  StructuredPage{
 
 #Preview(body: {
     MainPage()
+        .environment(Coordinator())
 })
 
 

@@ -16,7 +16,7 @@ extension ExtenedViewable {
 }
 struct HomeView : ExtenedViewable {
    
-    
+    @Environment(Coordinator.self) private var coordinator
     typealias Destination  = HomeView
     
     static let isButtomBarVisible: Bool = false
@@ -28,19 +28,21 @@ struct HomeView : ExtenedViewable {
     static let title = "خانه"
     var body: some View {
         Button("Home") {
-            Coordinator.shared.push(state: SearchView())
+            coordinator.push(state: SearchView())
+           // Coordinator.shared.push(state: SearchView())
         }
     }
     
 }
 #Preview {
     HomeView()
+        .environment(Coordinator())
 }
 struct SearchView : MainView {
    
     
 
-    
+    @Environment(Coordinator.self) private var coordinator
     static var title: String = "جستجو"
     
     static var isButtomBarVisible: Bool = false
@@ -49,7 +51,8 @@ struct SearchView : MainView {
     
     var body : some View {
         Button("Search") {
-            Coordinator.shared.push(state: HomeView())
+            coordinator.push(state: HomeView())
+           // Coordinator.shared.push(state: HomeView())
         }
     }
 }
