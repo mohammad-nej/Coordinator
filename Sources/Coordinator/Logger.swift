@@ -8,4 +8,4 @@
 import OSLog
 
 
-public let logger = Logger(subsystem: "Coordinator", category: "Default")
+ let logger = Logger(subsystem: "Coordinator", category: "Default")
