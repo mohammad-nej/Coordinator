@@ -32,6 +32,9 @@ public final class Coordinator {
     public var stack : [any MainView]
 
     @_disfavoredOverload
+    
+    /// > Warning: This initilizer is will set your homePage value to a default Warning page.
+    /// > use this only in Preview to quickly create a Coordinator object.
     public init() {
         logger.debug("Initializing Coordinator")
         stack = []
