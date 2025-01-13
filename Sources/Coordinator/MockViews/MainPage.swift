@@ -8,13 +8,13 @@
 import SwiftUI
 
 
-public protocol StructuredPage : View {}
+
 
 struct MainPage:  MainView{
     private var coordinator : Coordinator
     init(){
-        coordinator = Coordinator()
-        coordinator.homePage = HomeView()
+        coordinator = Coordinator(homePage: HomeView())
+     
     }
     
     var body : some View {
