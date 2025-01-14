@@ -9,13 +9,13 @@ import SwiftUI
 
 
 
-struct ReturnButton: View {
+public struct ReturnButton: View {
     @Environment(Coordinator.self) var cord : Coordinator
     public init(){
         
     }
     let text : String = "بازگشت"
-    var body: some View {
+    pulibc var body: some View {
         Button{
             cord.pop()
         }label:{
