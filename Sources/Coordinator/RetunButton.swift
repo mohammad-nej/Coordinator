@@ -15,7 +15,7 @@ public struct ReturnButton: View {
         
     }
     let text : String = "بازگشت"
-    pulibc var body: some View {
+    public var body: some View {
         Button{
             cord.pop()
         }label:{
