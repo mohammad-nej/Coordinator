@@ -11,7 +11,7 @@ import SwiftUI
 
 ///Phantom type for View, which will allow you to mark the Views that you want your Coordinator to
 ///show.
-@MainActor public protocol MainView:  View{ }
+@MainActor public protocol MainView:  View, Equatable{ }
 
 public extension MainView where Self : View {
     func returnView() -> Self {
@@ -20,4 +20,8 @@ public extension MainView where Self : View {
     
 }
 
-
+extension MainView {
+    nonisolated public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs == rhs
+    }
+}
