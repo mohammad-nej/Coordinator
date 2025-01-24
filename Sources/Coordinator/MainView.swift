@@ -20,8 +20,18 @@ public extension MainView where Self : View {
     
 }
 
-extension MainView {
-    nonisolated public static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs == rhs
+ public extension MainView  {
+    
+  
+    
+     nonisolated var id : String {
+        
+        let name = String(describing: Self.self)
+        return name
+        
+    }
+    
+    nonisolated  static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
     }
 }
